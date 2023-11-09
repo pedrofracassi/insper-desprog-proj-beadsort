@@ -47,6 +47,12 @@ function watch() {
     gulp.watch(ASSETS, copyAssets).on('change', browserSync.reload);
 }
 
+gulp.task('build', gulp.parallel(
+        compile,
+        copyStatic,
+        copyAssets)
+    )
+
 gulp.task('clean', clean);
 
 gulp.task('default', gulp.series(

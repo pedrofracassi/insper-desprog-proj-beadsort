@@ -30,7 +30,13 @@ Assim, de acordo com a imagem, a lista ordenada fica:
 Implementação em C
 ------------------
 
-Primeiro, encontramos o maior elemento da lista:
+Nessa implementação, vamos considerar uma função `beadsort` que recebe um ponteiro para uma lista de inteiros ` *list` e o tamanho dessa lista ` size`, e retorna um ponteiro para uma lista ordenada.
+
+```c
+int *beadsort(int *list, int size)
+```
+
+Para começar a implementação, encontramos o maior elemento da lista:
 
 ```c
 int max = 0;
@@ -47,27 +53,29 @@ Depois, criamos uma lista `beads` de tamanho `max` e inicializamos todos os elem
 int *beads = calloc(max, sizeof(int));
 ```
 
-Note que o método `calloc()` faz a mesma coisa que o `malloc()`, mas zera todos o espaço alocado.
+Note que o método `calloc()` faz a mesma coisa que o `malloc()`, mas zera todo o espaço alocado.
 
 ??? Checkpoint
 
-Como ficaria a lista `beads`, após ser inicializada, para a seguinte lista de entrada? Não considere o fim da execução do algoritmo, apenas como a lista ficaria após ser inicializada.
+Quantos elementos teria a lista `beads`, para a seguinte lista de entrada?
 
 ```
-[3, 3, 1, 4, 2]
+[3, 3, 1, 4, 2, 7, 5, 6]
 ```
 
 ::: Gabarito
 
+A lista teria 7 elementos, pois o maior valor da lista de entrada é 7.
+
 ```
-[0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0]
 ```
 
 :::
 
 ???
 
-Em seguida, para cada elemento da lista, incrementamos `beads` até o índice `num - 1`:
+Em seguida, para cada elemento da lista, incrementamos `beads` até o índice ` num - 1`:
 
 
 
@@ -79,22 +87,38 @@ for (int i = 0; i < size; i++) {
 }
 ```
 
-Pera lá, esse passo é confuso. Pare e pense sobre o que acontece com `beads` a cada iteração do for exterior. Vamos usar como exemplo a lista `[3, 3, 1, 4, 2]`:
+Pera lá, esse passo é confuso...
 
+??? Checkpoint
+...pare e simule o que acontece com `beads` a cada iteração do for exterior. Para isso, considere a lista ` [3, 3, 1, 4, 2]`.
+
+Se necessário, utilize esse [template](/template.txt) no notepad.
+
+::: Gabarito
 ```
+início: [0, 0, 0, 0]
 depois da 1a iteração: [1, 1, 1, 0]
 depois da 2a iteração: [2, 2, 2, 0]
 depois da 3a iteração: [3, 2, 2, 0]
-depois da 4a iteração: [3, 2, 2, 1]
-depois da 5a iteração: [3, 3, 2, 1]
+depois da 4a iteração: [4, 3, 3, 1]
+depois da 5a iteração: [5, 4, 3, 1]
 ```
+:::
+
+???
+
+Em seguida, criamos uma nova lista para armazenar a lista ordenada que retornaremos no final. Dessa vez, o tamanho é `size`, pois queremos uma lista com o mesmo tamanho da lista de entrada.
 
 
 ```c
-// Cria a lista ordenada
 int *sorted_list = malloc(size * sizeof(int));
+```
 
-// Para cada elemento da lista, percorre beads e incrementa count até que ele seja maior que i
+Aqui, não precisamos usar o `calloc()`, pois vamos preencher todos os elementos da lista com outros valores, pouco importanto o lixo de memória que estiver lá.
+
+Depois, para cada elemento da lista, percorremos `beads` e incrementamos `count` até que ele seja maior que `i`, e então colocamos `count` no índice `i` da lista ordenada.
+
+```c
 for (int i = 0; i < size; i++) {
     int count = 0;
     for (int j = 0; j < max; j++) {
@@ -104,14 +128,95 @@ for (int i = 0; i < size; i++) {
     }
     sorted_list[i] = count;
 }
+```
 
+??? Checkpoint
+
+Como ficaria a lista `sorted_list` após cada iteração do for exterior? Considere uma lista beads ` [5, 4, 3, 1]`.
+
+Novamente, use esse [template](/template2.txt) no notepad, se necessário.
+
+::: Gabarito
+
+```
+início: [0, 0, 0, 0, 0]
+depois da 1a iteração: [1, 0, 0, 0, 0]
+depois da 2a iteração: [1, 2, 0, 0, 0]
+depois da 3a iteração: [1, 2, 3, 0, 0]
+depois da 4a iteração: [1, 2, 3, 3, 0]
+depois da 5a iteração: [1, 2, 3, 3, 5]
+```
+
+Olha só, é a lista ordenada!
+
+:::
+
+???
+
+E, por fim, retornamos essa nova lista.
+```c
 return sorted_list;
+```
+
+---
+
+Desafios
+--------
+
+??? Desafio
+
+Qual a complexidade de tempo do **gravity sort**?
+
+::: Gabarito
+
+TODO GABARITO
+
+:::
+
+???
+
+---
+
+Código completo em C
+--------------------
+
+```c
+int *beadsort(int *list, int size) {
+    int max = 0;
+    for (int i = 0; i < size; i++) {
+        if (list[i] > max) {
+            max = list[i];
+        }
+    }
+
+    int *beads = calloc(max, sizeof(int));
+
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < list[i]; j++) {
+            beads[j]++;
+        }
+    }
+
+    int *sorted_list = malloc(size * sizeof(int));
+
+    for (int i = 0; i < size; i++) {
+        int count = 0;
+        for (int j = 0; j < max; j++) {
+            if (beads[j] > i) {
+                count++;
+            }
+        }
+        sorted_list[i] = count;
+    }
+
+    return sorted_list;
 }
 ```
 
-
 Código completo em Python
 -------------------------
+
+Para fins de consulta numa linguagem em que vocês tem mais familiaridade, deixo aqui também uma implementação em Python:
 
 ```py
 def beadsort(input_list):

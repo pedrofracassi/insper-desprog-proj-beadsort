@@ -1,0 +1,6 @@
+início: [0, 0, 0, 0]
+depois da 1a iteração: [0, 0, 0, 0]
+depois da 2a iteração: [0, 0, 0, 0]
+depois da 3a iteração: [0, 0, 0, 0]
+depois da 4a iteração: [0, 0, 0, 0]
+depois da 5a iteração: [0, 0, 0, 0]

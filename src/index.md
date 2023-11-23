@@ -13,11 +13,27 @@ Com essa explicação básica, é um pouco difícil de entender exatamente o que
 
 Primeiro, colocamos no ábaco a quantidade de contas equivalente ao número que queremos ordenar, sempre à esquerda. Para a lista acima, colocaríamos as contas assim no ábaco: (por enquanto a gravidade está desligada, ou o ábaco está na horizontal, sei lá)
 
-![Primeiro passo](bead/first.png)
 
-Então, quando ligássemos a gravidade, as contas cairiam e ficariam assim:
+<div style=" padding: 10px; background-color:#6e7051">
 
-![Segundo passo](bead/second.png)
+![Primeiro passo](img/bead/first.png)
+
+</div>
+
+Pense em como ficaria quando ligássemos a gravidade:
+
+Dica: Desenhe em um papel
+
+<div style=" padding: 10px; background-color:#6e7051">
+<details><summary>
+GABARITO
+</summary> 
+
+![Segundo passo](img/bead/second.png)
+
+</details>
+</div>
+
 
 E agora está tudo ordenado! A quantidade de contas no nível mais alto do ábaco representa o `lista[0]`, a quantidade de contas no segundo nível representa `lista[1]`, e assim por diante.
 
@@ -26,6 +42,49 @@ Assim, de acordo com a imagem, a lista ordenada fica:
 ```
 [1, 2, 3, 3, 4]
 ```
+
+Implementação em Python
+--------------------------
+A função que faz o `gravity sort`, recebe uma lista que vamos chamar de `input_list`
+```py
+def beadsort(input_list):
+```
+
+Inicializamos nosso código criando uma lista para retorno e iniciando uma lista com zero,s e seu tamanho é definido como o valor máximo presente na lista de entrada
+
+```py
+return_list = []
+
+transposed_list = [0] * max(input_list)
+```
+A segunda parte é fazer a contagem: Nesta parte, o código percorre cada elemento na lista de entrada. Para cada elemento, os primeiros elementos da `transposed_list` são incrementados em 1. 
+```py
+for num in input_list:
+    transposed_list[:num] = [n + 1 for n in transposed_list[:num]]
+```
+Nesta parte, o código constrói a lista de saída. Para cada posição i na lista de entrada, ele conta quantos elementos na `transposed_list` são maiores que i e adiciona esse número à `return_list`. Isso efetivamente determina a posição de cada elemento na lista ordenada.
+Por ultimo devemos construir a lista de saida, a `return_list` 
+
+```py
+for i in range(len(input_list)):
+    return_list.append(sum(n > i for n in transposed_list))
+```
+Essas três partes juntas formam o algoritmo Gravity Sort, onde a posição final de cada elemento é determinada com base nas contagens acumuladas.
+
+#
+Excercicio 1:
+
+A lista `[3, 3, 1, 5, 4]` depois de ser aplicada pelo gravity sort, ficaria como?
+
+<div style=" padding: 10px; background-color:#6e7051">
+<details><summary>
+GABARITO
+</summary> 
+
+
+</details>
+</div>
+
 
 Implementação em C
 ------------------

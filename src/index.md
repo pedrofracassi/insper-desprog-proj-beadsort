@@ -54,50 +54,15 @@ Olha só, são os mesmos valores que o primeiro vetor, porém agora ordenados!
 
 ???
 
----
+E assim funciona o **gravity sort**. Existem [outras formas de exemplificá-lo](https://en.wikipedia.org/wiki/Bead_sort), como com um [ábaco](https://pt.wikipedia.org/wiki/%C3%81baco), mas a ideia é sempre a mesma: colocar os elementos em uma estrutura, girá-la e deixar a gravidade agir.
 
-A ideia desse algoritmo é simular a queda de "contas" em um [ábaco](https://pt.wikipedia.org/wiki/%C3%81baco) devido à gravidade. 
-
-Com essa explicação básica, é um pouco difícil de entender exatamente o que será feito, então vamos a um exemplo. Suponha que temos a seguinte lista:
-
-```
-[3, 3, 1, 4, 2]
-```
-
-Primeiro, colocamos no ábaco a quantidade de contas equivalente ao número que queremos ordenar, sempre à esquerda. Para a lista acima, colocaríamos as contas assim no ábaco: (por enquanto a gravidade está desligada, ou o ábaco está na horizontal, sei lá)
-
-
-<div style=" padding: 10px; background-color:#6e7051">
-
-![Primeiro passo](img/bead/first.png)
-
-</div>
-
-Pense em como ficaria quando ligássemos a gravidade:
-
-Dica: Desenhe em um papel
-
-<div style=" padding: 10px; background-color:#6e7051">
-<details><summary>
-GABARITO
-</summary> 
-
-![Segundo passo](img/bead/second.png)
-
-</details>
-</div>
-
-
-E agora está tudo ordenado! A quantidade de contas no nível mais alto do ábaco representa o `lista[0]`, a quantidade de contas no segundo nível representa `lista[1]`, e assim por diante.
-
-Assim, de acordo com a imagem, a lista ordenada fica:
-
-```
-[1, 2, 3, 3, 4]
-```
+Para os nossos estudos, vamos usar caixas mesmo...
 
 Implementação em Python
---------------------------
+-------
+
+...e um pouquinho de Python também.
+
 A função que faz o `gravity sort`, recebe uma lista que vamos chamar de `input_list`
 ```py
 def beadsort(input_list):
@@ -124,21 +89,27 @@ for i in range(len(input_list)):
 ```
 Essas três partes juntas formam o algoritmo Gravity Sort, onde a posição final de cada elemento é determinada com base nas contagens acumuladas.
 
-#
-Excercicio 1:
+??? Checkpoint
 
-A lista `[3, 3, 1, 5, 4]` depois de ser aplicada pelo gravity sort, ficaria como?
+Quantos elementos teria a lista `beads`, para a seguinte lista de entrada?
 
-<div style=" padding: 10px; background-color:#6e7051">
-<details><summary>
-GABARITO
-</summary> 
+```
+[3, 3, 1, 4, 2, 7, 5, 6]
+```
 
+::: Gabarito
 
-</details>
-</div>
+A lista teria 7 elementos, pois o maior valor da lista de entrada é 7.
 
+```
+[0, 0, 0, 0, 0, 0, 0]
+```
 
+:::
+
+???
+
+<!--
 Implementação em C
 ------------------
 
@@ -269,6 +240,8 @@ E, por fim, retornamos essa nova lista.
 ```c
 return sorted_list;
 ```
+
+-->
 
 ---
 

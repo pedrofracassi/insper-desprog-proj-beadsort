@@ -58,10 +58,18 @@ E assim funciona o **gravity sort**. Existem [outras formas de exemplificá-lo](
 
 Para os nossos estudos, vamos usar caixas mesmo...
 
-Implementação em Python
+A implementação ingênua
 -------
 
 ...e um pouquinho de Python também.
+
+TODO: Explicar usando matriz de 0 e 1
+
+A implementação inteligente
+-------
+
+É possível, entretanto, implementar o gravity sort de forma um pouco mais inteligente quando nos desprendemos da ideia das caixas numa matriz. Vamos ver como.
+
 
 A função que faz o `gravity sort`, recebe uma lista que vamos chamar de `input_list`
 ```py
@@ -262,8 +270,10 @@ TODO GABARITO
 
 ---
 
-Código completo em C
+Implementação em C
 --------------------
+
+Puramente para fins de consulta, deixo aqui também uma versão da **implementação inteligente** em C, já que estamos nos aprofundando na linguagem esse semestre.
 
 ```c
 int *beadsort(int *list, int size) {
@@ -298,6 +308,7 @@ int *beadsort(int *list, int size) {
 }
 ```
 
+<!---
 Código completo em Python
 -------------------------
 
@@ -317,3 +328,4 @@ def beadsort(input_list):
 
     return return_list
 ```
+-->

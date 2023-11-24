@@ -2,7 +2,60 @@ Gravity Sort
 ======
 
 O **gravity sort** (ou bead sort) é um algoritmo de ordenação que não é
-particularmente rápido ou eficiente em termos de memória... mas é bonito!
+particularmente rápido ou eficiente em termos de memória... mas é interessante e bonito de ver!
+
+![Primeiro passo](bead/anim_bead_julien.gif)
+
+Antes de começar a ordenar vetores, vamos fazer um **exercício de simulação**. Imagine que, dentro de uma grade quadrada, você tem cinco pilhas de caixas, com diferentes quantidades de caixas em cada uma.
+
+**[IMAGEM CAIXAS NA GRADE]**
+
+??? Checkpoint
+
+Como ficaria essa grade se a girássemos 90 graus no sentido horário e deixássemos a gravidade agir sobre as caixas?
+
+**[IMAGEM GRADE GIRANDO]**
+
+Se precisar, desenhe a grade em um papel e faça a simulação.
+
+::: Gabarito
+
+Devido à gravidade, as caixas cairiam para baixo, e ficariam assim:
+
+**[IMAGEM CAIXAS CAINDO]**
+
+:::
+
+???
+
+Parabéns Newton, gravidade existe e funciona como esperamos. Mas como isso ~~afeta o grêmio~~ nos permite ordenar vetores? Vamos observar as imagens anteriores para descobrir.
+
+??? Checkpoint
+
+Se representássemos o número de caixas em cada **coluna** na imagem inicial da grade por um número em um vetor, como ficaria esse vetor?
+
+::: Gabarito
+
+O vetor seria ` [3, 1, 4, 2, 3]`, pois a primeira coluna tem 3 caixas, a segunda tem 1, e assim por diante.
+
+:::
+
+???
+
+??? Checkpoint
+
+E se representássemos o número de caixas em cada **linha** na imagem final da grade por um número em um vetor, como ficaria esse vetor?
+
+::: Gabarito
+
+O vetor seria ` [1, 2, 3, 3, 4]`, pois a primeira linha tem 1 caixa, a segunda tem 2, e assim por diante.
+
+Olha só, são os mesmos valores que o primeiro vetor, porém agora ordenados!
+
+???
+
+---
+
 A ideia desse algoritmo é simular a queda de "contas" em um [ábaco](https://pt.wikipedia.org/wiki/%C3%81baco) devido à gravidade. 
 
 Com essa explicação básica, é um pouco difícil de entender exatamente o que será feito, então vamos a um exemplo. Suponha que temos a seguinte lista:

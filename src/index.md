@@ -8,13 +8,15 @@ particularmente rápido ou eficiente em termos de memória... mas é interessant
 
 Antes de começar a ordenar vetores, vamos fazer um **exercício de simulação**. Imagine que, dentro de uma grade quadrada, você tem cinco pilhas de caixas, com diferentes quantidades de caixas em cada uma.
 
-**[IMAGEM CAIXAS NA GRADE]**
+
+![Primeiro passo](bead/caixas_empilhadas.png)
 
 ??? Checkpoint
 
 Como ficaria essa grade se a girássemos 90 graus no sentido horário e deixássemos a gravidade agir sobre as caixas?
 
-**[IMAGEM GRADE GIRANDO]**
+
+![Primeiro passo](bead/girando.gif)
 
 Se precisar, desenhe a grade em um papel e faça a simulação.
 
@@ -22,7 +24,8 @@ Se precisar, desenhe a grade em um papel e faça a simulação.
 
 Devido à gravidade, as caixas cairiam para baixo, e ficariam assim:
 
-**[IMAGEM CAIXAS CAINDO]**
+
+![Primeiro passo](bead/caindo.gif)
 
 :::
 

@@ -101,7 +101,7 @@ def bead_sort(vetor):
 def bead_sort(vetor):
     # Criar uma matriz quadrada de zeros do tamanho do maior elemento do vetor
     # Percorrer o vetor e, para cada elemento, preencher a matriz com uns até o índice do elemento
-    # Agora com os uns colocado, vamos girar a matriz 90 graus no sentido horário
+    
     # Vamos fazer as contas cairem agora
     # Percorrer a matriz e, para cada coluna, contar quantos uns tem
     # Retornar um vetor com esses valores
@@ -114,7 +114,7 @@ def bead_sort(vetor):
 Agora que temos o nosso passo a passo, vamos poder começar nossa implemtentação. Então vamos para nossa segunda parte.
 
 ??? Checkpoint
-Vamos pegar nossos "código" de comentarios e transformar ele. Mas vamos com calma e começar com a primeira parte. Olha que legal estavom evoluindo igual Pokemon.
+Vamos pegar nossos "código" de comentarios e transformar ele. Mas vamos com calma e começar com a primeira parte. Criaremos uma simples matriz primeiramente.
 
 ::: Gabarito
 ```py
@@ -123,9 +123,58 @@ def bead_sort(vetor):
     maximo = max(vetor)
     matriz = [[0 for _ in range(maximo)] for _ in range(len(vetor))]
 ```
-
 :::
 ???
+
+Temos uma matriz! Agora vamos para a segunda parte. Vamos implementar o nosso sort de verdade.
+
+??? Checkpoint
+Vamos pegar nossos codigo anterior e adicionar a parte de percorrer o verot e preencher a matriz com uns até o indice do elemento.
+
+::: Gabarito
+```py
+def bead_sort(vetor):
+    # Criar uma matriz quadrada de zeros do tamanho do maior elemento do vetor
+    maximo = max(vetor)
+    matriz = [[0 for _ in range(maximo)] for _ in range(len(vetor))]
+    # Percorrer o vetor e, para cada elemento, preencher a matriz com uns até o índice do elemento
+    for linhas, num in enumerate(vetor):
+        for colunas in range(num):
+            matriz[i][j] = 1
+```
+:::
+
+???
+
+Olha que legal, estamos começando a evoluir, somos iguais a um pokemon. Agora vamos para a terceira e talvez última parte.
+
+??? Checkpoint
+Vamos pegar nossos codigo anterior e adicionar para que nossos valores caiam como a bolsa em 1929.
+
+::: Gabarito
+```py
+def bead_sort(vetor):
+    # Criar uma matriz quadrada de zeros do tamanho do maior elemento do vetor
+    maximo = max(vetor)
+    matriz = [[0 for _ in range(maximo)] for _ in range(len(vetor))]
+    # Percorrer o vetor e, para cada elemento, preencher a matriz com uns até o índice do elemento
+    for linhas, num in enumerate(vetor):
+        for colunas in range(num):
+            matriz[i][j] = 1
+    # Vamos fazer as contas cairem agora
+    # Percorrer a matriz e, para cada coluna, contar quantos uns tem
+    # Retornar um vetor com esses valores
+    for colunas in range(maximo):
+        uns = sum(matriz[linhas][colunas] for linhas in range(len(vetor)))
+        for linhas in range(len(vetor)):
+            matriz[linhas][colunas] = 1 if linhas >= len(vetor) - uns else 0
+    return [sum(matriz[linhas]) for linhas in range(len(vetor))]
+```
+:::
+
+???
+
+
 
 
 ```py

@@ -117,7 +117,7 @@ Agora que temos o nosso passo a passo, vamos poder começar nossa implemtentaç�
 Vamos pegar nossos "código" de comentarios e transformar ele. Mas vamos com calma e começar com a primeira parte. Olha que legal estavom evoluindo igual Pokemon.
 
 ::: Gabarito
-```
+```py
 def bead_sort(vetor):
     # Criar uma matriz quadrada de zeros do tamanho do maior elemento do vetor
     maximo = max(vetor)

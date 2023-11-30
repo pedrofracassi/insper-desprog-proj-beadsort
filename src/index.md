@@ -4,8 +4,6 @@ Gravity Sort
 O **gravity sort** (ou bead sort) é um algoritmo de ordenação que não é
 particularmente rápido ou eficiente em termos de memória... mas é interessante e bonito de ver!
 
-![Primeiro passo](bead/anim_bead_julien.gif)
-
 Antes de começar a ordenar vetores, vamos fazer um **exercício de simulação**. Imagine que, dentro de uma grade quadrada, você tem cinco pilhas de caixas, com diferentes quantidades de caixas em cada uma.
 
 

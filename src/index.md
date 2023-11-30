@@ -4,34 +4,49 @@ Gravity Sort
 O **gravity sort** (ou bead sort) é um algoritmo de ordenação que não é
 particularmente rápido ou eficiente em termos de memória... mas é interessante e bonito de ver!
 
-![Primeiro passo](bead/anim_bead_julien.gif)
-
 Antes de começar a ordenar vetores, vamos fazer um **exercício de simulação**. Imagine que, dentro de uma grade quadrada, você tem cinco pilhas de caixas, com diferentes quantidades de caixas em cada uma.
 
 
-![Primeiro passo](bead/caixas_empilhadas.png)
+![Primeiro passo](img/bead/caixas_empilhadas.png)
 
 ??? Checkpoint
 
 Como ficaria essa grade se a girássemos 90 graus no sentido horário e deixássemos a gravidade agir sobre as caixas?
 
 
-![Primeiro passo](bead/girando.gif)
-
-Se precisar, desenhe a grade em um papel e faça a simulação.
-
+<details open>
+<summary>Desenhe a grade em um papel e faça a simulação.</summary>
+<br>
 ::: Gabarito
 
 Devido à gravidade, as caixas cairiam para baixo, e ficariam assim:
 
 
-![Primeiro passo](bead/caindo.gif)
+![Primeiro passo](img/bead/girando.gif)
+</details>
+
+
+
+E depois? O que aconteceria se a gravidade acontecesse?
+
+<details open>
+<summary>Desenhe a grade em um papel e faça a simulação.</summary>
+<br>
+::: Gabarito
+
+Devido à gravidade, as caixas cairiam para baixo, e ficariam assim:
+
+
+![Primeiro passo](img/bead/caindo.gif)
+</details>
+
 
 :::
 
 ???
 
 Parabéns Newton, gravidade existe e funciona como esperamos. Mas como isso ~~afeta o grêmio~~ nos permite ordenar vetores? Vamos observar as imagens anteriores para descobrir.
+
 
 ??? Checkpoint
 
@@ -40,6 +55,7 @@ Se representássemos o número de caixas em cada **coluna** na imagem inicial da
 ::: Gabarito
 
 O vetor seria ` [3, 1, 4, 2, 3]`, pois a primeira coluna tem 3 caixas, a segunda tem 1, e assim por diante.
+
 
 :::
 
@@ -61,85 +77,10 @@ E assim funciona o **gravity sort**. Existem [outras formas de exemplificá-lo](
 
 Para os nossos estudos, vamos usar caixas mesmo...
 
-A implementação ingênua
+A implementação por Matrizes
 -------
 
-...e um pouquinho de Python também.
-
-Porém, antes do Python, vamos pensar em pseudocódigo. Antes de qualquer coisa, precisamos de uma forma de armazenar a grade de caixas.
-
-??? Checkpoint
-
-Qual a estrutura de dados mais apropriada (e intuitiva) para armazenar a grade de caixas?
-
-::: Gabarito
-
-Uma **matriz**, de uns e zeros, onde cada elemento é uma caixa!
-
-:::
-
-???
-
-Show, temos uma forma de armazenar a grade. A partir do conceito da matriz de uns e zeros representando as caixas, vamos usar isso para criar uma função que recebe um vetor de inteiros desordenado e retorna um vetor de inteiros ordenado.
-
-Mas, pra não complicar muito logo de cara, [**vamos por partes**](https://www.amazon.com.br/Di%C3%A1rio-Jack-Estripador-Shirley-Harrison/dp/855030428X)!
-
-??? Checkpoint
-
-Tente rascunhar, em pseudocódigo, o passo a passo da nossa função. Não se preocupe com a sintaxe, apenas com a lógica.
-
-Eu começo!
-
-```
-def bead_sort(vetor):
-    # Criar uma matriz quadrada de zeros do tamanho do maior elemento do vetor
-```
-
-::: Gabarito
-
-```
-def bead_sort(vetor):
-    # Percorrer o vetor e, para cada elemento, preencher a matriz com uns até o índice do elemento
-    # 
-```
-
-:::
-
-???
-
-```py
-def bead_sort(sequence):
-    if not sequence:
-        return []
-
-    # Create a matrix of 0s
-    max_value = max(sequence)
-    grid = [[0 for _ in range(max_value)] for _ in range(len(sequence))]
-
-    # Drop the beads
-    for row, num in enumerate(sequence):
-        for col in range(num):
-            grid[row][col] = 1
-
-    # Let the beads fall
-    for col in range(max_value):
-        # Count the number of 1s in each column
-        ones = sum(grid[row][col] for row in range(len(sequence)))
-        # Move them to the bottom of the column
-        for row in range(len(sequence)):
-            grid[row][col] = 1 if row >= len(sequence) - ones else 0
-
-    # Read the sorted array
-    return [sum(grid[row]) for row in range(len(sequence))]
-
-# Example usage
-print(bead_sort([4, 3, 2, 1, 5]))
-```
-
-A implementação inteligente
--------
-
-É possível, entretanto, implementar o gravity sort de forma um pouco mais inteligente quando nos desprendemos da ideia das caixas numa matriz. Vamos ver como.
+É possível, implementar o gravity sort de forma um pouco mais inteligente quando nos desprendemos da ideia das caixas numa matriz. Vamos ver como.
 
 
 A função que faz o `gravity sort`, recebe uma lista que vamos chamar de `input_list`
@@ -321,6 +262,83 @@ return sorted_list;
 ```
 
 -->
+
+A implementação por vetores
+-------
+
+...e um pouquinho de Python também.
+
+Porém, antes do Python, vamos pensar em pseudocódigo. Antes de qualquer coisa, precisamos de uma forma de armazenar a grade de caixas.
+
+??? Checkpoint
+
+Qual a estrutura de dados mais apropriada (e intuitiva) para armazenar a grade de caixas?
+
+::: Gabarito
+
+Uma **matriz**, de uns e zeros, onde cada elemento é uma caixa!
+
+:::
+
+???
+
+Show, temos uma forma de armazenar a grade. A partir do conceito da matriz de uns e zeros representando as caixas, vamos usar isso para criar uma função que recebe um vetor de inteiros desordenado e retorna um vetor de inteiros ordenado.
+
+Mas, pra não complicar muito logo de cara, [**vamos por partes**](https://www.amazon.com.br/Di%C3%A1rio-Jack-Estripador-Shirley-Harrison/dp/855030428X)!
+
+??? Checkpoint
+
+Tente rascunhar, em pseudocódigo, o passo a passo da nossa função. Não se preocupe com a sintaxe, apenas com a lógica.
+
+Eu começo!
+
+```
+def bead_sort(vetor):
+    # Criar uma matriz quadrada de zeros do tamanho do maior elemento do vetor
+```
+
+::: Gabarito
+
+```
+def bead_sort(vetor):
+    # Percorrer o vetor e, para cada elemento, preencher a matriz com uns até o índice do elemento
+    # 
+```
+
+:::
+
+???
+
+```py
+def bead_sort(sequence):
+    if not sequence:
+        return []
+
+    # Create a matrix of 0s
+    max_value = max(sequence)
+    grid = [[0 for _ in range(max_value)] for _ in range(len(sequence))]
+
+    # Drop the beads
+    for row, num in enumerate(sequence):
+        for col in range(num):
+            grid[row][col] = 1
+
+    # Let the beads fall
+    for col in range(max_value):
+        # Count the number of 1s in each column
+        ones = sum(grid[row][col] for row in range(len(sequence)))
+        # Move them to the bottom of the column
+        for row in range(len(sequence)):
+            grid[row][col] = 1 if row >= len(sequence) - ones else 0
+
+    # Read the sorted array
+    return [sum(grid[row]) for row in range(len(sequence))]
+
+# Example usage
+print(bead_sort([4, 3, 2, 1, 5]))
+```
+
+
 
 ---
 

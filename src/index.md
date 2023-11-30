@@ -401,7 +401,7 @@ Qual a complexidade de tempo do **gravity sort**?
 
 ::: Gabarito
 
-TODO GABARITO
+O(n**1/2)
 
 :::
 

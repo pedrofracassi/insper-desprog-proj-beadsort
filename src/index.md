@@ -149,7 +149,7 @@ def bead_sort(vetor):
 Olha que legal, estamos começando a evoluir, somos iguais a um pokemon. Agora vamos para a terceira e talvez última parte.
 
 ??? Checkpoint
-Vamos pegar nossos codigo anterior e adicionar para que nossos valores caiam como a bolsa em 1929.
+Agora iremos adicionar para que nossos valores caiam como a bolsa em 1929.
 
 ::: Gabarito
 ```py

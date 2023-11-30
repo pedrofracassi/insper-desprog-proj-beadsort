@@ -175,7 +175,7 @@ def bead_sort(vetor):
 
 
 
-```py
+<!-- ```py
 def bead_sort(sequence):
     if not sequence:
         return []
@@ -202,7 +202,7 @@ def bead_sort(sequence):
 
 # Example usage
 print(bead_sort([4, 3, 2, 1, 5]))
-```
+``` -->
 
 A implementação inteligente
 -------

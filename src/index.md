@@ -401,7 +401,12 @@ Qual a complexidade de tempo do **gravity sort**?
 
 ::: Gabarito
 
-O(n**1/2)
+A complexidade de tempo de execução do algoritmo varia de O (1) a O (S) (S é a soma dos inteiros de entrada) dependendo da perspectiva do usuário. Finalmente, três implementações possíveis são sugeridas.
+
+O (1)  : Soltar todos os grânulos juntos como uma única operação (simultânea). Essa complexidade não pode ser implementada na prática.
+O (n ^ 1 ^ / ^ 2 ): Em um modelo físico realista que usa a gravidade, o tempo que leva para deixar as contas caírem é proporcional à raiz quadrada da altura máxima, que é proporcional a n.
+O (n)  : Largando a linha de contas no quadro (representando um número) como uma operação distinta, pois o número de linhas é igual a n.
+O (S)  : Descartando cada conta 'como uma operação separada, uma vez que S é a soma de todas as contas.
 
 :::
 

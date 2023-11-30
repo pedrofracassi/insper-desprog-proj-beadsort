@@ -99,13 +99,34 @@ def bead_sort(vetor):
 
 ```
 def bead_sort(vetor):
+    # Criar uma matriz quadrada de zeros do tamanho do maior elemento do vetor
     # Percorrer o vetor e, para cada elemento, preencher a matriz com uns até o índice do elemento
-    # 
+    # Agora com os uns colocado, vamos girar a matriz 90 graus no sentido horário
+    # Vamos fazer as contas cairem agora
+    # Percorrer a matriz e, para cada coluna, contar quantos uns tem
+    # Retornar um vetor com esses valores
 ```
 
 :::
 
 ???
+
+Agora que temos o nosso passo a passo, vamos poder começar nossa implemtentação. Então vamos para nossa segunda parte.
+
+??? Checkpoint
+Vamos pegar nossos "código" de comentarios e transformar ele. Mas vamos com calma e começar com a primeira parte. Olha que legal estavom evoluindo igual Pokemon.
+
+::: Gabarito
+```
+def bead_sort(vetor):
+    # Criar uma matriz quadrada de zeros do tamanho do maior elemento do vetor
+    maximo = max(vetor)
+    matriz = [[0 for _ in range(maximo)] for _ in range(len(vetor))]
+```
+
+:::
+???
+
 
 ```py
 def bead_sort(sequence):

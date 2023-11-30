@@ -66,7 +66,75 @@ A implementação ingênua
 
 ...e um pouquinho de Python também.
 
-TODO: Explicar usando matriz de 0 e 1
+Porém, antes do Python, vamos pensar em pseudocódigo. Antes de qualquer coisa, precisamos de uma forma de armazenar a grade de caixas.
+
+??? Checkpoint
+
+Qual a estrutura de dados mais apropriada (e intuitiva) para armazenar a grade de caixas?
+
+::: Gabarito
+
+Uma **matriz**, de uns e zeros, onde cada elemento é uma caixa!
+
+:::
+
+???
+
+Show, temos uma forma de armazenar a grade. A partir do conceito da matriz de uns e zeros representando as caixas, vamos usar isso para criar uma função que recebe um vetor de inteiros desordenado e retorna um vetor de inteiros ordenado.
+
+Mas, pra não complicar muito logo de cara, [**vamos por partes**](https://www.amazon.com.br/Di%C3%A1rio-Jack-Estripador-Shirley-Harrison/dp/855030428X)!
+
+??? Checkpoint
+
+Tente rascunhar, em pseudocódigo, o passo a passo da nossa função. Não se preocupe com a sintaxe, apenas com a lógica.
+
+Eu começo!
+
+```
+def bead_sort(vetor):
+    # Criar uma matriz quadrada de zeros do tamanho do maior elemento do vetor
+```
+
+::: Gabarito
+
+```
+def bead_sort(vetor):
+    # Percorrer o vetor e, para cada elemento, preencher a matriz com uns até o índice do elemento
+    # 
+```
+
+:::
+
+???
+
+```py
+def bead_sort(sequence):
+    if not sequence:
+        return []
+
+    # Create a matrix of 0s
+    max_value = max(sequence)
+    grid = [[0 for _ in range(max_value)] for _ in range(len(sequence))]
+
+    # Drop the beads
+    for row, num in enumerate(sequence):
+        for col in range(num):
+            grid[row][col] = 1
+
+    # Let the beads fall
+    for col in range(max_value):
+        # Count the number of 1s in each column
+        ones = sum(grid[row][col] for row in range(len(sequence)))
+        # Move them to the bottom of the column
+        for row in range(len(sequence)):
+            grid[row][col] = 1 if row >= len(sequence) - ones else 0
+
+    # Read the sorted array
+    return [sum(grid[row]) for row in range(len(sequence))]
+
+# Example usage
+print(bead_sort([4, 3, 2, 1, 5]))
+```
 
 A implementação inteligente
 -------

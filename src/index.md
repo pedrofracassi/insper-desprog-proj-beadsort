@@ -405,7 +405,7 @@ A complexidade de tempo de execução do algoritmo varia de O (1) a O (S) (S é 
 
 O (1)  : Soltar todos os grânulos juntos como uma única operação (simultânea). Essa complexidade não pode ser implementada na prática.
 
-O (n ^ 1 ^ / ^ 2 ): Em um modelo físico realista que usa a gravidade, o tempo que leva para deixar as contas caírem é proporcional à raiz quadrada da altura máxima, que é proporcional a n.
+O (n ^ (1/2) ): Em um modelo físico realista que usa a gravidade, o tempo que leva para deixar as contas caírem é proporcional à raiz quadrada da altura máxima, que é proporcional a n.
 
 O (n)  : Largando a linha de contas no quadro (representando um número) como uma operação distinta, pois o número de linhas é igual a n.
 
